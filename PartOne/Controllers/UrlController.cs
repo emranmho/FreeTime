@@ -17,9 +17,9 @@ public class UrlController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> ShortenUrl(string longUrl)
+    public async Task<IActionResult> ShortenUrl(string longUrl, string? customUrl)
     {
-        var shortUrl = await _shortenedUrl.ShortenUrl(longUrl);
+        var shortUrl = await _shortenedUrl.ShortenUrl(longUrl, customUrl);
         
         return Json(shortUrl);
     }

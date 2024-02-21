@@ -25,7 +25,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "GeneratedUrl",
+    pattern: "tiny/{shortUrl}",
+    defaults: new { controller = "Url", action = "RedirectToLongUrl" }
+);
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

@@ -1,4 +1,5 @@
 using System.Text;
+using PartOne.Application.Common;
 using PartOne.Application.Common.Interfaces;
 using PartOne.Application.Services.Interfaces;
 using PartOne.Domain.Entities;
@@ -15,31 +16,47 @@ public class ShortenedUrlService : IShortenedUrlService
     }
     
     
-    public async Task<string> ShortenUrl(string longUrl)
+    public async Task<ResponseClass<string>> ShortenUrl(string longUrl, string? customUrl)
     {
         if (string.IsNullOrEmpty(longUrl))
         {
-            return ("Please provide a URL to shorten.");
+            return new ResponseClass<string>
+            {
+                Success = false,
+                Message = "Please provide a URL to shorten."
+            };
         }
-        
-        var existingLongUrl = await _unitOfWork.ShortenedUrl.Get(u => u.LongUrl == longUrl);
-        
+
+        if (!string.IsNullOrEmpty(customUrl))
+        {
+            var existingCustomUrl = await _unitOfWork.ShortenedUrl.Get(u => u.ShortUrl == customUrl);
+
+            if (existingCustomUrl != null)
+            {
+                return new ResponseClass<string>
+                {
+                    Success = true,
+                    Message = "Short URLs limit reached for this URL."
+                };
+            }
+        }
+
+        var existingLongUrl = await _unitOfWork.ShortenedUrl.Get(u => u.LongUrl == longUrl);        
         if (existingLongUrl != null)
         {
-            return existingLongUrl.ShortUrl;
+            return new ResponseClass<string>
+            {
+                Success = true,
+                Message = "Url already exist in db.",
+                Value = existingLongUrl.ShortUrl
+            };
         }
         
+
+
         string shortCode = GenerateShortCode(); // Implement GenerateShortCode()
         
-        // var existingUrl = await _unitOfWork.ShortenedUrl.Get(u => u.ShortUrl == shortCode);
-        //
-        // if (existingUrl != null)
-        // {
-        //     // Handle collision (regenerate code or use existing)
-        //     // return Conflict("Short code already exists.");
-        //     shortCode = GenerateShortCode(); // Regenerate if preferred
-        // }
-        
+                
         // Create a new ShortenedUrl entity
         var shortUrlEntity = new ShortenedUrl
         {
@@ -53,7 +70,12 @@ public class ShortenedUrlService : IShortenedUrlService
         await _unitOfWork.ShortenedUrl.Add(shortUrlEntity);
         await _unitOfWork.Save();
 
-        return shortUrlEntity.ShortUrl;
+        return new ResponseClass<string>
+        {
+            Success = true,
+            Message = "New generated URL",
+            Value = shortUrlEntity.ShortUrl
+        };
     }
 
     public async Task<string> RedirectToLongUrl(string shortUrl)

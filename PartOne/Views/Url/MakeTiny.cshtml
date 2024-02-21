@@ -3,40 +3,92 @@
     Layout = "_Layout";
 }
 
+<div class="row">
+    <div class="col-8">
+        <label class="form-label">Give Url Here</label>
+        <input type="text" class="form-control" id="longUrl" placeholder="https://www.google.com/" required/>
+        
+    </div>
+    <div class="col-4">
+        <label class="form-label">Customize your link</label>
+        <input type="text" class="form-control" id="customShort" />
 
-<label class="form-label">Give Url Here</label>
-<input type="text" class="form-control" id="longUrl" placeholder="https://www.google.com/"/>
+    </div>
+</div>
+
 <button type="submit" class="btn btn-primary mt-4" id="shortBtn" onclick="GenerateShortUrl()">Short It</button>
 
-<div>
-    <p>Your short URL is: <a id="shortUrlLink" href="" target="_blank"></a></p>
+<div id="generatedUrl" class="visually-hidden">
+    <label class="form-label">Your short URL is</label>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="shortUrl" readonly>
+        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+    </div>
+
+
+    @* <input type="text" class="form-control" id="shortUrl" readonly/>
+
+    <button type="button" id="copyButton">Copy</button> *@
 </div>
 
 @section Scripts{
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
     <script type="text/javascript">
-    
+
+        $("#copyButton").click(function () {
+            // Select the text in the input field
+            $("#shortUrl").select();
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Optionally, you can provide feedback to the user
+            alert("Copied to clipboard!");
+        });
+
+
+
         function GenerateShortUrl(){
+
             let url = $("#longUrl").val();
+            if (url == "") {
+                alert("Please enter a URL in the 'Give Url Here' field.");
+                return;
+            }
+
+            let customShort = $("#customShort").val();
+            if (customShort != "") {
+
+                if (customShort.length > 11) {
+                    alert("Custom must not be greater than 10 characters.");
+                    return;
+                } 
+                else if (customShort.length > 5) {
+                    alert("Custom must be at least 5 characters.");
+                    return;
+                }
+                
+            }
+            
+            
             $.ajax({
                 url: "/Url/ShortenUrl",
                 method: "GET",
                 dataType: "json",
-                data: { longUrl: url },
+                data: { longUrl: url, customUrl: customShort },
                 success: function (data) {
-                    let x = data;
-                    
-                    $("#shortUrlLink").attr("href", window.location.href + "/" + data).text(window.location.href + "/" + data);
-                    
-                    
-                    $("#shortUrlLink").click(function (e) {
-                        e.preventDefault();
-                        // Redirect to the desired URL with the short URL as a parameter
-                        // window.location.href = "/Url/RedirectToLongUrl?shortUrl=" + data;
-                        // Open the URL in a new tab
-                        window.open("/Url/RedirectToLongUrl?shortUrl=" + data, '_blank');
-                    });
+                    if (!data.success) {
+                        alert(data.message);
+                        return;
+                    }
+
+                    let fullShortUrl = window.location.origin + "/tiny/" + data.value;
+
+                    $("#generatedUrl").removeClass("visually-hidden")
+
+                    $("#shortUrl").val(fullShortUrl)                    
                 },
                 error: function (error) {
                     // Handle error

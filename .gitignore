@@ -1,0 +1,11 @@
+
+*.dll
+bin/
+obj/
+
+# JetBrains Rider
+.idea/
+
+.vs/
+
+

@@ -9,46 +9,68 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0f60ead-3b76-4b13-9400-f8ccef7149fb" name="Changes" comment="" />
+    <list default="true" id="a0f60ead-3b76-4b13-9400-f8ccef7149fb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FreeTime/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FreeTime/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/Views/Url/MakeTiny.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/Views/Url/MakeTiny.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.exe" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/bin/Debug/net8.0/PartOne.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/PartOne.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/ref/PartOne.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/ref/PartOne.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/refint/PartOne.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PartOne/obj/Debug/net8.0/refint/PartOne.dll" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/DefaultBuilder/src/WebApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2ceBwIuR5Si1o0A9ELaeHFw2EnG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.PartOne: http.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.13656388&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.PartOne: http.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "settings.editor.splitter.proportion": "0.13656388",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\emran\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\emran\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\emran\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\emran\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\emran\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\emran\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.PartOne: http">
     <configuration name="PartOne: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/PartOne/PartOne.csproj" />
@@ -105,12 +127,14 @@
       <option name="presentableId" value="Default" />
       <updated>1708462404505</updated>
       <workItem from="1708462406727" duration="12921000" />
+      <workItem from="1708507393272" duration="2569000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
