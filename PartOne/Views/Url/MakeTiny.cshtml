@@ -1,0 +1,49 @@
+@{
+    ViewBag.Title = "Make";
+    Layout = "_Layout";
+}
+
+
+<label class="form-label">Give Url Here</label>
+<input type="text" class="form-control" id="longUrl" placeholder="https://www.google.com/"/>
+<button type="submit" class="btn btn-primary mt-4" id="shortBtn" onclick="GenerateShortUrl()">Short It</button>
+
+<div>
+    <p>Your short URL is: <a id="shortUrlLink" href="" target="_blank"></a></p>
+</div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <script type="text/javascript">
+    
+        function GenerateShortUrl(){
+            let url = $("#longUrl").val();
+            $.ajax({
+                url: "/Url/ShortenUrl",
+                method: "GET",
+                dataType: "json",
+                data: { longUrl: url },
+                success: function (data) {
+                    let x = data;
+                    
+                    $("#shortUrlLink").attr("href", window.location.href + "/" + data).text(window.location.href + "/" + data);
+                    
+                    
+                    $("#shortUrlLink").click(function (e) {
+                        e.preventDefault();
+                        // Redirect to the desired URL with the short URL as a parameter
+                        // window.location.href = "/Url/RedirectToLongUrl?shortUrl=" + data;
+                        // Open the URL in a new tab
+                        window.open("/Url/RedirectToLongUrl?shortUrl=" + data, '_blank');
+                    });
+                },
+                error: function (error) {
+                    // Handle error
+                    console.error(error);
+                },
+            });
+        }
+        
+    </script>
+}

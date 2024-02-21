@@ -1,0 +1,204 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Code\\FreeTime\\PartOne.Infrastructure\\PartOne.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj",
+        "projectName": "PartOne.Application",
+        "projectPath": "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj",
+        "packagesPath": "C:\\Users\\emran\\.nuget\\packages\\",
+        "outputPath": "E:\\Code\\FreeTime\\PartOne.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\emran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj": {
+                "projectPath": "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj",
+        "projectName": "PartOne.Domain",
+        "projectPath": "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj",
+        "packagesPath": "C:\\Users\\emran\\.nuget\\packages\\",
+        "outputPath": "E:\\Code\\FreeTime\\PartOne.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\emran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Code\\FreeTime\\PartOne.Infrastructure\\PartOne.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Code\\FreeTime\\PartOne.Infrastructure\\PartOne.Infrastructure.csproj",
+        "projectName": "PartOne.Infrastructure",
+        "projectPath": "E:\\Code\\FreeTime\\PartOne.Infrastructure\\PartOne.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\emran\\.nuget\\packages\\",
+        "outputPath": "E:\\Code\\FreeTime\\PartOne.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\emran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj": {
+                "projectPath": "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj"
+              },
+              "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj": {
+                "projectPath": "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

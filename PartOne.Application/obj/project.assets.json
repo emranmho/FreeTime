@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "PartOne.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/PartOne.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PartOne.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PartOne.Domain/1.0.0": {
+      "type": "project",
+      "path": "../PartOne.Domain/PartOne.Domain.csproj",
+      "msbuildProject": "../PartOne.Domain/PartOne.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "PartOne.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\emran\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj",
+      "projectName": "PartOne.Application",
+      "projectPath": "E:\\Code\\FreeTime\\PartOne.Application\\PartOne.Application.csproj",
+      "packagesPath": "C:\\Users\\emran\\.nuget\\packages\\",
+      "outputPath": "E:\\Code\\FreeTime\\PartOne.Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\emran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj": {
+              "projectPath": "E:\\Code\\FreeTime\\PartOne.Domain\\PartOne.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
