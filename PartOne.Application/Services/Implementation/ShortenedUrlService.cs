@@ -18,55 +18,53 @@ public class ShortenedUrlService : IShortenedUrlService
     
     public async Task<ResponseClass<string>> ShortenUrl(string longUrl, string? customUrl)
     {
-        if (string.IsNullOrEmpty(longUrl))
+        if (string.IsNullOrWhiteSpace(longUrl))
+        {
+            return new ResponseClass<string> { Success = false, Message = "Please provide a URL to shorten." };
+        }
+
+        if (!string.IsNullOrWhiteSpace(customUrl) && (customUrl.Length > 10 || customUrl.Length < 5))
         {
             return new ResponseClass<string>
             {
                 Success = false,
-                Message = "Please provide a URL to shorten."
+                Message = customUrl.Length > 10 ? "Custom must not be greater than 10 characters." : "Custom must be at least 5 characters."
             };
         }
 
-        if (!string.IsNullOrEmpty(customUrl))
+        if (!string.IsNullOrWhiteSpace(customUrl))
         {
             var existingCustomUrl = await _unitOfWork.ShortenedUrl.Get(u => u.ShortUrl == customUrl);
 
             if (existingCustomUrl != null)
             {
-                return new ResponseClass<string>
-                {
-                    Success = true,
-                    Message = "Short URLs limit reached for this URL."
-                };
+                return new ResponseClass<string> { Success = false, Message = "Short URLs limit reached for this URL." };
             }
         }
 
-        var existingLongUrl = await _unitOfWork.ShortenedUrl.Get(u => u.LongUrl == longUrl);        
+
+        var existingLongUrl = await _unitOfWork.ShortenedUrl.Get(u => u.LongUrl == longUrl);
         if (existingLongUrl != null)
         {
-            return new ResponseClass<string>
+            if(existingLongUrl.ShortUrl == customUrl)
             {
-                Success = true,
-                Message = "Url already exist in db.",
-                Value = existingLongUrl.ShortUrl
-            };
+                return new ResponseClass<string> { Success = true, Message = "Url already exists in the database.", Value = existingLongUrl.ShortUrl };
+            }
+            return new ResponseClass<string> { Success = true, Message = "Url already exists in the database.", Value = existingLongUrl.ShortUrl };
         }
-        
+
+        string shortCode = customUrl ?? GenerateShortCode();
 
 
-        string shortCode = GenerateShortCode(); // Implement GenerateShortCode()
-        
-                
         // Create a new ShortenedUrl entity
         var shortUrlEntity = new ShortenedUrl
         {
             LongUrl = longUrl,
             ShortUrl = shortCode,
-            CreatedTime = DateTime.Now,
+            CreatedTime = DateTime.UtcNow,
             ExpireDate = DateTime.UtcNow.AddDays(2)
         };
 
-        // Add the entity to the context and save changes
         await _unitOfWork.ShortenedUrl.Add(shortUrlEntity);
         await _unitOfWork.Save();
 
@@ -97,6 +95,18 @@ public class ShortenedUrlService : IShortenedUrlService
         await _unitOfWork.Save();
 
         return (url.LongUrl);
+    }
+
+    public async Task DeleteExpireUrls()
+    {
+        var expireUrls = await _unitOfWork.ShortenedUrl.GetAll(u=>u.ExpireDate < DateTime.UtcNow);
+
+        foreach (var url in expireUrls)
+        {
+            _unitOfWork.ShortenedUrl.Remove(url);
+        }
+
+        await _unitOfWork.Save();
     }
 
     private string GenerateShortCode()

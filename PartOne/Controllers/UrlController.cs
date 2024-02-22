@@ -31,4 +31,10 @@ public class UrlController : Controller
         
         return Redirect(longUrl);
     }
+
+
+    public IActionResult MakeTiny2()
+    {
+        return View();
+    }
 }

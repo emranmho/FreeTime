@@ -6,4 +6,5 @@ public interface IShortenedUrlService
 {
     Task<ResponseClass<string>> ShortenUrl(string longUrl, string? customUrl);
     Task<string> RedirectToLongUrl(string shortUrl);
+    Task DeleteExpireUrls();
 }

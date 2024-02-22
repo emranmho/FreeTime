@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Make Tiny 2";
+    Layout = "_Layout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Background Image</title>
+    <style>
+        body {
+            background-image: url(/images/bg.jpg); /* Replace 'your-image-url.jpg' with the actual path or URL to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container{
+            width: 80%; 
+            margin:auto;
+            align-self:center;
+            background-color: white;
+        }
+
+        /* Your additional styles go here */
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <div class="top_header">
+            <i class="bx bx-link-alt"></i>
+            <h1>Url Shortner</h1>
+        </div>
+
+        <div class="main_content">
+            <label for="originalUrl">Enter URL To Shorten :</label>
+            <input type="text" id="originalUrl" placeholder="https://example.com">
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+@* <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/urlStyle.css">
+    <title>Tiny Url</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <i class="bx bx-link-alt"></i>
+        <h1>Url Shortner</h1>
+        <label for="originalUrl">Enter URL To Shorten :</label>
+        <input type="text" id="originalUrl" placeholder="https://example.com">
+        
+        <label for="originalUrl" style="margin-top: 0px; ">Custom Shorten :</label>
+        <input type="text" id="originalUrl" style="margin-bottom: 25px;">
+
+        <div class="buttons">
+            <button id="reload-btn">Reload</button>
+            <button id="short-btn">Short It</button>
+        </div>
+        <label for="shortenedUrl">Shortened URL :</label>
+        @* <textarea id="shortenedUrl" rows="3" readonly></textarea> *@
+        @* <div class="input-group mb-3">
+            <input type="text" class="form-control" id="shortUrl" readonly>
+            <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+
+</html> *@ 

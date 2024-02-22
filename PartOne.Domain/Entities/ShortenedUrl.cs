@@ -17,11 +17,6 @@ public class ShortenedUrl
 
     public DateTime ExpireDate { get; set; }
 
-    public int UsageCount { get; set; }
+    public int UsageCount { get; set; } 
     
-    public ShortenedUrl()
-    {
-        CreatedTime = DateTime.Now;
-        ExpireDate = CreatedTime.AddDays(2); // Set expiration 2 days from creation
-    }
 }

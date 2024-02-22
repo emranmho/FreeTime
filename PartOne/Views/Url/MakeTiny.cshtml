@@ -61,11 +61,11 @@
             let customShort = $("#customShort").val();
             if (customShort != "") {
 
-                if (customShort.length > 11) {
+                if (customShort.length > 10) {
                     alert("Custom must not be greater than 10 characters.");
                     return;
                 } 
-                else if (customShort.length > 5) {
+                else if (customShort.length < 5) {
                     alert("Custom must be at least 5 characters.");
                     return;
                 }

@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using PartOne.Application.Common.Interfaces;
+using PartOne.Application.Services.BackgroundJob;
 using PartOne.Application.Services.Implementation;
 using PartOne.Application.Services.Interfaces;
 using PartOne.Infrastructure.Data;
@@ -19,6 +21,9 @@ public static class DependencyInjection
             options.UseSqlServer(connectionString)
         );
         
+        //backgroung service,
+        services.AddSingleton<IHostedService, CleanupExpiredUrlsService>();
+
         services.AddScoped<IUnitOfWork,UnitOfWork>();
         services.AddScoped<IShortenedUrlService, ShortenedUrlService>();
         
