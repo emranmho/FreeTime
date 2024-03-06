@@ -1,37 +1,78 @@
 @{
     ViewBag.Title = "Make";
-    Layout = "_Layout";
+    Layout = "_LayoutMakeTiny";
 }
 
-<div class="row">
-    <div class="col-8">
-        <label class="form-label">Give Url Here</label>
-        <input type="text" class="form-control" id="longUrl" placeholder="https://www.google.com/" required/>
-        
-    </div>
-    <div class="col-4">
-        <label class="form-label">Customize your link</label>
-        <input type="text" class="form-control" id="customShort" />
 
-    </div>
+
+<div class="row">	
+	<div class="col-md-5 col-md-pull-7">
+		<div class="booking-form">  
+
+            <div id="processUrl" class="">
+                <div class="form-group">
+                    <span class="form-label">Give Url Here</span>
+                    <input type="url" class="form-control" id="longUrl" placeholder="https://www.google.com/" required />
+                </div>
+                <div class="form-group">
+                    <span class="form-label">Customize link</span>
+                    <input type="text" class="form-control" id="customShort" />
+                </div>
+                <div class="form-btn">
+                    <button type="submit" class="btn btn-primary" id="shortBtn" onclick="GenerateShortUrl()">
+                        <span class="spinner-border spinner-border-sm visually-hidden" id="spinner" role="status" aria-hidden="true"></span>
+                        Short It
+                    </button>                    
+                </div>
+
+            </div>
+
+            <div id="generatedUrl" class="visually-hidden">
+                <div class="form-group">
+                    <span class="form-label">Give Url Here</span>
+                    <input type="url" class="form-control" id="longUrlAfter"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your short URL is</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="shortUrl" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+                    </div>
+                </div>
+                <div class="form-btn">
+                    <button type="submit" class="btn btn-primary" id="shortBtn" onclick="GenerateShortUrl()">Short Another</button>
+                </div>
+            </div>
+            
+
+
+            @* <div id="generatedUrl" class="visually-hidden" style="margin-top: 4rem">
+                <div class="form-group">
+                    <label class="form-label">Your short URL is</label>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="shortUrl" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+                    </div>
+                </div>
+            </div> *@
+
+		</div>
+	</div>
+    <div class="col-md-6 col-md-push-5">
+		<div class="booking-cta">
+			<h1>Make your URL Tiny</h1>
+			@* <p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+				ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+				Perspiciatis.
+			</p> *@
+		</div>
+	</div>
 </div>
 
-<button type="submit" class="btn btn-primary mt-4" id="shortBtn" onclick="GenerateShortUrl()">Short It</button>
 
-<div id="generatedUrl" class="visually-hidden">
-    <label class="form-label">Your short URL is</label>
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" id="shortUrl" readonly>
-        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
-    </div>
-
-
-    @* <input type="text" class="form-control" id="shortUrl" readonly/>
-
-    <button type="button" id="copyButton">Copy</button> *@
-</div>
-
+ 
 @section Scripts{
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
@@ -54,8 +95,33 @@
 
             let url = $("#longUrl").val();
             if (url == "") {
-                alert("Please enter a URL in the 'Give Url Here' field.");
+                swal(
+                    {
+                        title: "Empty URL.",
+                        text: "Please enter an URL.",
+                        icon: "error",
+                        timer: 3000,
+                    }
+                );
                 return;
+            } else {                
+                
+                var urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+                
+                if (!urlRegex.test(url)) {
+                    swal(
+                        {
+                            title: "Invalid URL.",
+                            text: "Please enter a valid URL.",
+                            icon: "error",
+                            timer: 3000,
+                        }
+                    );
+                    //alert('Invalid URL. Please enter a valid URL.');
+                    return "URL is required";
+                }
+                
+                
             }
 
             let customShort = $("#customShort").val();
@@ -71,7 +137,8 @@
                 }
                 
             }
-            
+
+            $("#spinner").removeClass("visually-hidden");
             
             $.ajax({
                 url: "/Url/ShortenUrl",
@@ -79,6 +146,9 @@
                 dataType: "json",
                 data: { longUrl: url, customUrl: customShort },
                 success: function (data) {
+
+                    console.log(data);
+
                     if (!data.success) {
                         alert(data.message);
                         return;
@@ -86,9 +156,15 @@
 
                     let fullShortUrl = window.location.origin + "/tiny/" + data.value;
 
-                    $("#generatedUrl").removeClass("visually-hidden")
+                    $("#spinner").addClass("visually-hidden");
 
-                    $("#shortUrl").val(fullShortUrl)                    
+                    $("#processUrl").addClass("visually-hidden");
+
+                    $("#generatedUrl").removeClass("visually-hidden");
+
+                    $("#longUrlAfter").val(url);
+                    
+                    $("#shortUrl").val(fullShortUrl);                    
                 },
                 error: function (error) {
                     // Handle error
