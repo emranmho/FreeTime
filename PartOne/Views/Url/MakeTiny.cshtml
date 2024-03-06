@@ -94,49 +94,14 @@
         function GenerateShortUrl(){
 
             let url = $("#longUrl").val();
-            if (url == "") {
-                swal(
-                    {
-                        title: "Empty URL.",
-                        text: "Please enter an URL.",
-                        icon: "error",
-                        timer: 3000,
-                    }
-                );
-                return;
-            } else {                
-                
-                var urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-                
-                if (!urlRegex.test(url)) {
-                    swal(
-                        {
-                            title: "Invalid URL.",
-                            text: "Please enter a valid URL.",
-                            icon: "error",
-                            timer: 3000,
-                        }
-                    );
-                    //alert('Invalid URL. Please enter a valid URL.');
-                    return "URL is required";
-                }
-                
-                
-            }
-
             let customShort = $("#customShort").val();
-            if (customShort != "") {
 
-                if (customShort.length > 10) {
-                    alert("Custom must not be greater than 10 characters.");
-                    return;
-                } 
-                else if (customShort.length < 5) {
-                    alert("Custom must be at least 5 characters.");
-                    return;
-                }
-                
+
+            if (!ValidateUrl(url, customShort)) {
+                return;
             }
+
+           
 
             $("#spinner").removeClass("visually-hidden");
             
@@ -172,6 +137,72 @@
                 },
             });
         }
-        
+
+        function ValidateUrl(url, customShort) {
+
+            let validation = true;
+
+            if (url == "") {
+                swal(
+                    {
+                        title: "Empty URL.",
+                        text: "Please enter an URL.",
+                        icon: "error",
+                        timer: 3000,
+                    }
+                );
+                validation = false;
+            } else {
+
+                var urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+
+                if (!urlRegex.test(url)) {
+                    swal(
+                        {
+                            title: "Invalid URL.",
+                            text: "Please enter a valid URL.",
+                            icon: "error",
+                            timer: 3000,
+                        }
+                    );
+                    //alert('Invalid URL. Please enter a valid URL.');
+                    validation = false;
+                }
+            }
+
+            if (validation) {
+                if (customShort != "") {
+
+                    if (customShort.length > 10) {
+                        swal(
+                            {
+                                title: "Invalid Custom.",
+                                text: "Custom must not be greater than 10 characters.",
+                                icon: "error",
+                                timer: 3000,
+                            }
+                        );
+                        //alert("Custom must not be greater than 10 characters.");
+                        validation = false;
+                    }
+                    else if (customShort.length < 5) {
+                        swal(
+                            {
+                                title: "Invalid Custom.",
+                                text: "Custom must be at least 5 characters.",
+                                icon: "error",
+                                timer: 3000,
+                            }
+                        );
+                        //alert("Custom must be at least 5 characters.");
+                        validation = false;
+                    }
+
+                }
+            }
+            
+
+            return validation;
+        }
     </script>
 }
