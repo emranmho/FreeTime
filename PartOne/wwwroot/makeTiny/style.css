@@ -5,12 +5,25 @@
 
 .section .section-center {
 	position: absolute;
-	top: 50%;
+	top: 20%;
 	left: 0;
 	right: 0;
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+	/*-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);*/
 }
+
+/*.section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.section-center {*/
+	/* Remove absolute positioning */
+	/*position: static;
+}*/
+
 
 #booking {
 	font-family: 'Montserrat', sans-serif;
@@ -135,4 +148,25 @@
 .booking-cta p {
 	font-size: 16px;
 	color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-backdrop {
+	display: none; /* Hide the backdrop by default */
+}
+
+	.modal-backdrop.show {
+		opacity: 0 !important; /* Ensure the backdrop remains transparent */
+	}
+
+/* Customize modal size */
+.modal-dialog {
+	width: 15%; /* Adjust the width as desired */
+	max-width: 800px; /* Set a maximum width if needed */
+	height: auto; /* Auto height or specify a fixed height */
+	margin: 10% auto; /* Adjust the vertical margin to center the modal */
+
+	position: fixed;
+	top: 40%;
+	left: 12.5%;
+	transform: translate(-50%, -50%);
 }

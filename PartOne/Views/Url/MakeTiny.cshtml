@@ -8,8 +8,7 @@
 <div class="row">	
 	<div class="col-md-5 col-md-pull-7">
 		<div class="booking-form">  
-
-            <div id="processUrl" class="">
+            <div id="processUrl" class="visually-hidden">
                 <div class="form-group">
                     <span class="form-label">Give Url Here</span>
                     <input type="url" class="form-control" id="longUrl" placeholder="https://www.google.com/" required />
@@ -27,7 +26,7 @@
 
             </div>
 
-            <div id="generatedUrl" class="visually-hidden">
+            <div id="generatedUrl" class="">
                 <div class="form-group">
                     <span class="form-label">Give Url Here</span>
                     <input type="url" class="form-control" id="longUrlAfter"/>
@@ -39,8 +38,16 @@
                         <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" id="shortBtn" onclick="MakeAnotherUrl()">
+                       Visit
+                    </button>
+                    <button type="submit" class="btn btn-primary ml-2" id="shortBtn" onclick="GenerateQRCode()">
+                        QR code
+                    </button>
+                </div>
                 <div class="form-btn">
-                    <button type="submit" class="btn btn-primary" id="shortBtn" onclick="GenerateShortUrl()">
+                    <button type="submit" class="btn btn-primary" id="shortBtn" onclick="MakeAnotherUrl()">
                         <i class="fa-solid fa-left-long"></i>  Tiny Another
                     </button>
                 </div>
@@ -74,11 +81,24 @@
 </div>
 
 
+@* QR code modal *@
+<div class="modal fade" id="qrCodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">            
+            <div class="modal-body">
+                <div id="qr_code"></div>
+                <button id="downloadQRCodeBtn" onclick="downloadQRCode('my_qr_code', 'png')">Download QR Code</button>
+            </div>            
+        </div>
+    </div>
+</div>
  
 @section Scripts{
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
     <script type="text/javascript">
+
+        let fullShortUrl;
 
         $("#copyButton").click(function () {
             // Select the text in the input field
@@ -121,7 +141,7 @@
                         return;
                     }
 
-                    let fullShortUrl = window.location.origin + "/tiny/" + data.value;
+                    fullShortUrl = window.location.origin + "/tiny/" + data.value;
 
                     $("#spinner").addClass("visually-hidden");
 
@@ -206,5 +226,39 @@
 
             return validation;
         }
+
+        function MakeAnotherUrl() {
+            $("#processUrl").removeClass("visually-hidden");
+            $("#generatedUrl").addClass("visually-hidden");
+
+            $("#longUrl").val("");
+            $("#customShort").val("");
+        }
+
+        function GenerateQRCode() {
+            $("#qrCodeModal").modal('show');
+
+            $("#qr_code").html("");
+
+            var qrcode = new QRCode("qr_code", {
+                text: fullShortUrl,
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            
+        }
+
+        function downloadQRCode(filename, format) {
+            var canvas = document.getElementById("qr_code").childNodes[0]; // Get canvas element
+            var link = document.createElement("a");
+            link.download = filename + "." + format; // Set filename and format
+            link.href = canvas.toDataURL("image/" + format); // Create data URL
+            link.click(); // Simulate a click to initiate download
+        }
+
     </script>
 }
