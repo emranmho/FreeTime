@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PartOne.Application.Services.Interfaces;
+using System.Text;
 
 namespace PartOne.Controllers;
 
@@ -11,8 +12,22 @@ public class UrlController : Controller
     {
         _shortenedUrl = shortenedUrl;
     }
+
+    [Route("maketiny")]
     public IActionResult MakeTiny()
     {
+        string uid = "";
+        if (!HttpContext.Session.TryGetValue("uid", out var uidBytes))
+        {
+            uid = Guid.NewGuid().ToString();
+            uidBytes = Encoding.UTF8.GetBytes(uid);
+            HttpContext.Session.Set("uid", uidBytes);
+        }
+        else
+        {
+            uid = Encoding.UTF8.GetString(uidBytes);
+        }
+
         return View();
     }
 
