@@ -7,12 +7,10 @@ namespace PartOne.Infrastructure.Repository;
 
 public class Repository<T> : IRepository<T> where T: class
 {
-    private readonly ApplicationDbContext _db;
-    internal DbSet<T> _dbSet;
+    private readonly DbSet<T> _dbSet;
     public Repository(ApplicationDbContext db)
     {
-        _db = db;
-        _dbSet = _db.Set<T>();
+        _dbSet = db.Set<T>();
     }
     
     public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, bool tracked = false)
